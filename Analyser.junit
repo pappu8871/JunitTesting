@@ -1,10 +1,12 @@
 package mood_Analyser;
 
-public class WelcomeMoodAnalyser {
+public class MoodAnalyser {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-System.out.println("Welcome to Mood_Analyser");
-	}
-
+public String analyseMood(String message) {
+	if (message.contains("sad")) {
+		return "SAD";
+	} else {
+	return "Happy";	
+   }
+  }
 }
