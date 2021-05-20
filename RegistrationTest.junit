@@ -1,53 +1,105 @@
 package registration;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.junit.Assert;
+import org.junit.Test;
 
-public class UserValidator {
-private static final String FIRST_NAME_PATTERN = "^[A-Z]{1}[a-z]{3,20}$" ;
-private static final String LAST_NAME_PATTERN = "^[A-Z]{1}[a-z]{3,20}$" ;
-private static final String EMAIL_ADDRESS_PATTERN = "^[a-z]{3}[.][a-z]{3}+[@][a-z]{5,10}[.][a-z]{2}[.][a-z]{2}$" ;
-private static final String MOBILE_NUMBER_PATTERN = "^[7-9]{1}[0-9]{9,9}$" ;
+class UserValidatorTest {
 
-//FirstName Validation check
-public boolean validateFirstName(String FirstName) {
-	Pattern p = Pattern.compile(FIRST_NAME_PATTERN) ;
-	if (FirstName == null) {
-        return false;
-    }
-	Matcher m = p.matcher(FIRST_NAME_PATTERN);
-	return true;	
+
+	@Test
+	public void givenFirstName_WhenProper_ShouldReturnTrue() {
+		UserValidator validator = new UserValidator();
+	  boolean result = validator.validateFirstName("pappu");
+	   Assert.assertEquals(true, result);
+	}
+	
+
+@Test
+	public void givenFirstName_WhenProper_ShouldReturnfalse() {
+		UserValidator validator = new UserValidator();
+	    boolean result = validator.validateFirstName("pa");
+	   Assert.assertEquals(false, result);
+	}
+@Test
+public void givenFirstName_WhenProper_ShouldReturnfalse1() {
+	UserValidator validator = new UserValidator();
+    boolean result = validator.validateFirstName("pap@pu");
+   Assert.assertEquals(false, result);
 }
 
-//LiastName Validation check
-public boolean validateLastName(String FirstName) {
-	Pattern p = Pattern.compile(LAST_NAME_PATTERN) ;
-	if (FirstName == null) {
-      return false;
-  }
-	Matcher m = p.matcher(LAST_NAME_PATTERN);
-	return true;	
+
+//LastName 	Vlidation
+@Test
+public void givenLastName_WhenProper_ShouldReturnTrue() {
+	UserValidator validator = new UserValidator();
+  boolean result = validator.validateLastName("Thakur");
+   Assert.assertEquals(true, result);
+}
+
+@Test
+public void givenLastName_WhenProper_ShouldReturnfalse() {
+	UserValidator validator = new UserValidator();
+  boolean result = validator.validateLastName("01Thakur");
+   Assert.assertEquals(false, result);
+}
+
+@Test
+public void givenLastName_WhenProper_ShouldReturnfalse1() {
+	UserValidator validator = new UserValidator();
+  boolean result = validator.validateLastName("Thakur1254");
+   Assert.assertEquals(false, result);
 }
 
 
-//EmailValidation check
-public boolean validateEMAIL_ADDRESS_PATTERNE(String Email) {
-	Pattern p = Pattern.compile(EMAIL_ADDRESS_PATTERN) ;
-	if (Email == null) {
-		return false;
-	}
-	Matcher m = p.matcher(EMAIL_ADDRESS_PATTERN);
-	return true;
-	}
+// Email Validation check
+@Test
+public void givenEmail_WhenProper_ShouldReturnTrue() {
+	UserValidator validator = new UserValidator();
+    boolean result = validator.validateEMAIL_ADDRESS_PATTERNE("abc.xyz@bridgelabz.co.in");
+   Assert.assertEquals(true, result);
+}
+	
+@Test
+public void givenEmail_WhenProper_ShouldReturnTrue1() {
+	UserValidator validator = new UserValidator();
+    boolean result = validator.validateEMAIL_ADDRESS_PATTERNE("abc@bridgelabz.co.in");
+   Assert.assertEquals(true, result);
+}
 
-//Mobile Validation check
-public boolean validateMOBILE_NUMBER_PATTERN(String Mobile) {
-	Pattern p = Pattern.compile(MOBILE_NUMBER_PATTERN) ;
-	if (Mobile == null) {
-		return false;
-	}
-	Matcher m = p.matcher(MOBILE_NUMBER_PATTERN);
-	return true;
-	}
+@Test
+public void givenEmail_WhenProper_ShouldReturnfalse() {
+	UserValidator validator = new UserValidator();
+    boolean result = validator.validateEMAIL_ADDRESS_PATTERNE("abc.xyz@.co.in");
+   Assert.assertEquals(false, result);
+}
 
+
+// Mobile Validation Check
+@Test
+public void givenMobile_WhenProper_ShouldReturnTrue() {
+	UserValidator validator = new UserValidator();
+    boolean result = validator.validateMOBILE_NUMBER_PATTERN("8871312779");
+   Assert.assertEquals(true, result);
+}
+
+@Test
+public void givenMobile_WhenProper_ShouldReturnTrue1() {
+	UserValidator validator = new UserValidator();
+    boolean result = validator.validateMOBILE_NUMBER_PATTERN("9589312404");
+   Assert.assertEquals(true, result);
+}
+
+@Test
+public void givenMobile_WhenProper_ShouldReturnfalse() {
+	UserValidator validator = new UserValidator();
+    boolean result = validator.validateMOBILE_NUMBER_PATTERN("35892404");
+   Assert.assertEquals(false, result);
+}
+
+@Test
+public void givenMobile_WhenProper_ShouldReturnfalse1() {
+	UserValidator validator = new UserValidator();
+    boolean result = validator.validateMOBILE_NUMBER_PATTERN("3580004546592404");
+   Assert.assertEquals(false, result);
+}
 }
