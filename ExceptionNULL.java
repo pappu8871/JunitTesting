@@ -1,14 +1,10 @@
 package exceptionHandel;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class MoodAnalyserException extends Exception {
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+	public MoodAnalyserException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
 
-class MoodAnalyserTest {
-
-	@Test
-	 public void giveNullMoodShouldThrowException(){
-      MoodAnalyser moodAnalyser = new MoodAnalyser();
-		moodAnalyser.analyserMood();
-	}}
+}
