@@ -1,37 +1,14 @@
 package exceptionHandel;
 
-public class MoodAnalyser {
+import static org.junit.jupiter.api.Assertions.*;
 
-	private String message;
-	
-	public String  analyserMood(String message)throws MoodAnalyserException { 
-		return this.message = message;
-		
-		// TODO Auto-generated method stub
-	}
-	
-	 
-	void analyserMood() {
-		// TODO Auto-generated method stub
-		this.message = message;
-	}
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
+class MoodAnalyserTest {
 
-	public String MoodAnalyser() throws MoodAnalyserException {
-		try {
-		if (message.contains("sad"))
-			if (message.contains("sad"))
-			return "SAD";
-		else
-			return "Happy";
-		}catch (NullPointerException e) {
-		
-	throw new MoodAnalyserException("Enter your proper mood");
-	}
-		return "Happy";
-	
-}
-	
-	}	
-
-
+	@Test
+	 public void giveNullMoodShouldThrowException(){
+      MoodAnalyser moodAnalyser = new MoodAnalyser();
+		moodAnalyser.analyserMood();
+	}}
